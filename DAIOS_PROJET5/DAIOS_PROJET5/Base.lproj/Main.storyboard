@@ -205,14 +205,14 @@
                                 <variation key="heightClass=compact" axis="vertical"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GTJ-98-yw6" userLabel="Swipe Stack">
-                                <rect key="frame" x="141.5" y="273.5" width="131.5" height="40.5"/>
+                                <rect key="frame" x="145.5" y="273.5" width="123.5" height="40.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowUP" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CQj-lp-5a9">
-                                        <rect key="frame" x="58" y="0.0" width="15" height="10"/>
+                                        <rect key="frame" x="54" y="0.0" width="15" height="10"/>
                                         <variation key="heightClass=compact" image="ArrowLeft"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Swipe left to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Tme-Hf-KJ0">
-                                        <rect key="frame" x="0.0" y="18" width="131.5" height="22.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Swipe up to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Tme-Hf-KJ0">
+                                        <rect key="frame" x="0.0" y="18" width="123.5" height="22.5"/>
                                         <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -307,6 +307,7 @@
                     <connections>
                         <outlet property="centralView" destination="7LR-VN-vGy" id="pMO-fq-dCk"/>
                         <outlet property="labelInstagrid" destination="L0n-H6-PJR" id="fS3-AQ-IiO"/>
+                        <outlet property="swipeLabel" destination="Tme-Hf-KJ0" id="sh6-rs-m5a"/>
                         <outlet property="swipeStack" destination="GTJ-98-yw6" id="gsY-3W-327"/>
                     </connections>
                 </viewController>

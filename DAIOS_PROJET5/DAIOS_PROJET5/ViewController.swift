@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var swipeLabel: UILabel!
     @IBOutlet weak var centralView: CentralView!
     @IBOutlet weak var swipeStack: UIStackView!
     @IBOutlet weak var labelInstagrid: UILabel!
@@ -29,6 +30,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        launchApp()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            swipeLabel.text = "Swipe left to share"
+        } else {
+            swipeLabel.text = "Swipe up to share"
+            
+        }
     }
     /**
      Function that launches the App and makes initial layout

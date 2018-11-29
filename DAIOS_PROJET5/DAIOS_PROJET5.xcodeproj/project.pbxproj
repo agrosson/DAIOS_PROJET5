@@ -15,7 +15,6 @@
 		C1C0211221A6EEE000DD93BE /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C1C0211121A6EEE000DD93BE /* Delm-Medium.otf */; };
 		C1C0211421A6EEED00DD93BE /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C1C0211321A6EEED00DD93BE /* ThirstySoftRegular.otf */; };
 		C1CDE74621AC23A400869384 /* CentralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CDE74521AC23A400869384 /* CentralView.swift */; };
-		C1CDE74821AC337900869384 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CDE74721AC337900869384 /* SwipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		C1C0211121A6EEE000DD93BE /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		C1C0211321A6EEED00DD93BE /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		C1CDE74521AC23A400869384 /* CentralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralView.swift; sourceTree = "<group>"; };
-		C1CDE74721AC337900869384 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +63,6 @@
 				C1C020FF21A6EEA500DD93BE /* AppDelegate.swift */,
 				C1C0210121A6EEA500DD93BE /* ViewController.swift */,
 				C1C0210321A6EEA500DD93BE /* Main.storyboard */,
-				C1CDE74721AC337900869384 /* SwipeView.swift */,
 				C1CDE74521AC23A400869384 /* CentralView.swift */,
 				C1C0211121A6EEE000DD93BE /* Delm-Medium.otf */,
 				C1C0211321A6EEED00DD93BE /* ThirstySoftRegular.otf */,
@@ -150,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1CDE74621AC23A400869384 /* CentralView.swift in Sources */,
-				C1CDE74821AC337900869384 /* SwipeView.swift in Sources */,
 				C1C0210221A6EEA500DD93BE /* ViewController.swift in Sources */,
 				C1C0210021A6EEA500DD93BE /* AppDelegate.swift in Sources */,
 			);
