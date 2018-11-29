@@ -10,6 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var selectedView2_1: UIView!
+    
+    @IBOutlet weak var selectedView2_2: UIView!
+    
+    @IBOutlet weak var selectedViex1_2: UIView!
     @IBOutlet weak var swipeLabel: UILabel!
     @IBOutlet weak var centralView: CentralView!
     @IBOutlet weak var swipeStack: UIStackView!
@@ -17,13 +22,22 @@ class ViewController: UIViewController {
    
     @IBAction func topRectangleButton(_ sender: UIButton) {
         centralView.centralViewDisplay = .rectangleTop
+        selectedView2_1.isHidden = true
+        selectedView2_2.isHidden = true
+        selectedViex1_2.isHidden = false
     }
     
     @IBAction func squareButton(_ sender: UIButton) {
         centralView.centralViewDisplay = .square
+        selectedView2_1.isHidden = true
+        selectedView2_2.isHidden = false
+        selectedViex1_2.isHidden = true
     }
     
     @IBAction func bottomRectangleButton(_ sender: UIButton) {centralView.centralViewDisplay = .rectangleBotton
+        selectedView2_1.isHidden = false
+        selectedView2_2.isHidden = true
+        selectedViex1_2.isHidden = true
         
     }
     
@@ -49,7 +63,7 @@ class ViewController: UIViewController {
      */
     private func launchApp(){
 
-        centralView.centralViewDisplay = .square
+        centralView.centralViewDisplay = .rectangleBotton
    
     }
     
