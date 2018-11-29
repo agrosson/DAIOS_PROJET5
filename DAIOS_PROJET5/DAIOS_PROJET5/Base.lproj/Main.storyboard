@@ -163,7 +163,7 @@
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YeX-uw-2Xe" userLabel="StackViewViewOptions">
-                                <rect key="frame" x="20" y="681.5" width="374" height="111.5"/>
+                                <rect key="frame" x="20" y="776.5" width="374" height="111.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJc-zn-Y69" userLabel="Button1and2">
                                         <rect key="frame" x="0.0" y="0.0" width="111.5" height="111.5"/>
@@ -225,7 +225,6 @@
                             <constraint firstItem="L0n-H6-PJR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="04K-4R-Idj"/>
                             <constraint firstItem="GTJ-98-yw6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1Ug-Wp-HOe"/>
                             <constraint firstItem="YeX-uw-2Xe" firstAttribute="bottom" secondItem="7LR-VN-vGy" secondAttribute="bottom" id="4OK-CO-IyX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YeX-uw-2Xe" secondAttribute="bottom" constant="20" id="6t4-4w-YMe"/>
                             <constraint firstItem="YeX-uw-2Xe" firstAttribute="top" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="250" constant="8" id="BgN-UU-qi6">
                                 <variation key="heightClass=compact" constant="40"/>
                             </constraint>
@@ -277,7 +276,6 @@
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <exclude reference="6t4-4w-YMe"/>
                                 <include reference="EBB-Ff-zpP"/>
                                 <include reference="HPe-wc-Mk8"/>
                                 <include reference="lsp-XV-FVH"/>
