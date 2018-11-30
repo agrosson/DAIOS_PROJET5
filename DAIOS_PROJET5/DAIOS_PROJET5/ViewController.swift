@@ -34,6 +34,12 @@ class ViewController: UIViewController {
         selectedView2_1.isHidden = true
         selectedView2_2.isHidden = true
         selectedViex1_2.isHidden = false
+        buttomTopLong.isHidden = false
+        buttomBottomLeft.isHidden = false
+        buttomBottomRight.isHidden = false
+        buttonTopLeft.isHidden = true
+        buttonTopRight.isHidden = true
+        buttomBottomLong.isHidden = true
     }
     
     @IBAction func squareButton(_ sender: UIButton) {
@@ -41,12 +47,24 @@ class ViewController: UIViewController {
         selectedView2_1.isHidden = true
         selectedView2_2.isHidden = false
         selectedViex1_2.isHidden = true
+        buttomTopLong.isHidden = true
+        buttomBottomLeft.isHidden = false
+        buttomBottomRight.isHidden = false
+        buttonTopLeft.isHidden = false
+        buttonTopRight.isHidden = false
+        buttomBottomLong.isHidden = true
     }
     
     @IBAction func bottomRectangleButton(_ sender: UIButton) {centralView.centralViewDisplay = .rectangleBotton
         selectedView2_1.isHidden = false
         selectedView2_2.isHidden = true
         selectedViex1_2.isHidden = true
+        buttomTopLong.isHidden = true
+        buttomBottomLeft.isHidden = true
+        buttomBottomRight.isHidden = true
+        buttonTopLeft.isHidden = false
+        buttonTopRight.isHidden = false
+        buttomBottomLong.isHidden = false
         
     }
    
@@ -80,22 +98,6 @@ class ViewController: UIViewController {
         print(("longBottom"))
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
        launchApp()
@@ -119,6 +121,9 @@ class ViewController: UIViewController {
     private func launchApp(){
 
         centralView.centralViewDisplay = .rectangleBotton
+        buttomTopLong.isHidden = true
+        buttomBottomLeft.isHidden = true
+        buttomBottomRight.isHidden = true
    
     }
     
