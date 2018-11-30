@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1041FDD21B1DFBC00024811 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = C1041FDC21B1DFBC00024811 /* AppIcon.appiconset */; };
 		C1C0210021A6EEA500DD93BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C020FF21A6EEA500DD93BE /* AppDelegate.swift */; };
 		C1C0210221A6EEA500DD93BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C0210121A6EEA500DD93BE /* ViewController.swift */; };
 		C1C0210521A6EEA500DD93BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C0210321A6EEA500DD93BE /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C1041FDC21B1DFBC00024811 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon.appiconset; sourceTree = "<group>"; };
 		C1C020FC21A6EEA500DD93BE /* DAIOS_PROJET5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DAIOS_PROJET5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C020FF21A6EEA500DD93BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C0210121A6EEA500DD93BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				C1CDE74521AC23A400869384 /* CentralView.swift */,
 				C1C0211121A6EEE000DD93BE /* Delm-Medium.otf */,
 				C1C0211321A6EEED00DD93BE /* ThirstySoftRegular.otf */,
+				C1041FDC21B1DFBC00024811 /* AppIcon.appiconset */,
 				C1C0210621A6EEA600DD93BE /* Assets.xcassets */,
 				C1C0210821A6EEA600DD93BE /* LaunchScreen.storyboard */,
 				C1C0210B21A6EEA600DD93BE /* Info.plist */,
@@ -135,6 +138,7 @@
 				C1C0210721A6EEA600DD93BE /* Assets.xcassets in Resources */,
 				C1C0211421A6EEED00DD93BE /* ThirstySoftRegular.otf in Resources */,
 				C1C0211221A6EEE000DD93BE /* Delm-Medium.otf in Resources */,
+				C1041FDD21B1DFBC00024811 /* AppIcon.appiconset in Resources */,
 				C1C0210521A6EEA500DD93BE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
