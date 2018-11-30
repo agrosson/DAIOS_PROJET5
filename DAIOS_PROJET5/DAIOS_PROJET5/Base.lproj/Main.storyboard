@@ -413,6 +413,12 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buttomBottomLeft" destination="X3D-LE-730" id="7dX-5U-baq"/>
+                        <outlet property="buttomBottomLong" destination="5TR-75-1MO" id="NRL-7K-zgo"/>
+                        <outlet property="buttomBottomRight" destination="vft-HW-t1j" id="f8N-Td-QG2"/>
+                        <outlet property="buttomTopLong" destination="N4S-ho-k4J" id="hoS-H6-eRy"/>
+                        <outlet property="buttonTopLeft" destination="BKL-bm-kbb" id="7ep-Di-4dN"/>
+                        <outlet property="buttonTopRight" destination="zqu-Ig-r9F" id="kRm-bp-kLk"/>
                         <outlet property="centralView" destination="7LR-VN-vGy" id="pMO-fq-dCk"/>
                         <outlet property="labelInstagrid" destination="L0n-H6-PJR" id="fS3-AQ-IiO"/>
                         <outlet property="selectedView2_1" destination="29N-OS-4Kr" id="X02-hA-xpW"/>

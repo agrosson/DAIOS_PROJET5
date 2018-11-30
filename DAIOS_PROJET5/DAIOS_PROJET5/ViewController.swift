@@ -20,6 +20,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var swipeStack: UIStackView!
     @IBOutlet weak var labelInstagrid: UILabel!
    
+    // outlet buttons
+    @IBOutlet weak var buttonTopLeft: UIButton!
+    @IBOutlet weak var buttonTopRight: UIButton!
+    @IBOutlet weak var buttomBottomLeft: UIButton!
+    @IBOutlet weak var buttomBottomRight: UIButton!
+    @IBOutlet weak var buttomTopLong: UIButton!
+    @IBOutlet weak var buttomBottomLong: UIButton!
+    
+    
     @IBAction func topRectangleButton(_ sender: UIButton) {
         centralView.centralViewDisplay = .rectangleTop
         selectedView2_1.isHidden = true
