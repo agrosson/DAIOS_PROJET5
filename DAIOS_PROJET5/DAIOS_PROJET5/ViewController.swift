@@ -40,6 +40,52 @@ class ViewController: UIViewController {
         selectedViex1_2.isHidden = true
         
     }
+   
+    // Buttons add pictures
+    
+    
+    
+    @IBAction func buttonTopLeft(_ sender: UIButton) {
+        print("topleft")
+    }
+    
+    @IBAction func buttonTopRight(_ sender: UIButton) {
+        print("topright")
+    }
+    
+    
+    @IBAction func buttonBottomLeft(_ sender: UIButton) {
+        print("bottomLeft")
+    }
+    
+    @IBAction func buttonBottomRight(_ sender: UIButton) {
+        print("bottomRight")
+    }
+    
+    
+    @IBAction func buttonTopLong(_ sender: UIButton) {
+        print("longtop")
+    }
+    
+    @IBAction func buttonBottomLong(_ sender: UIButton) {
+        print(("longBottom"))
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -228,6 +228,9 @@
                                     <constraint firstAttribute="width" secondItem="BKL-bm-kbb" secondAttribute="height" multiplier="1:1" id="okW-pk-jSr"/>
                                 </constraints>
                                 <state key="normal" image="Combined Shape"/>
+                                <connections>
+                                    <action selector="buttonTopLeft:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JZe-fS-EWO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqu-Ig-r9F" userLabel="ButtonTopRight">
                                 <rect key="frame" x="221.66666666666666" y="324" width="47.999999999999972" height="48"/>
@@ -236,6 +239,9 @@
                                     <constraint firstAttribute="width" secondItem="zqu-Ig-r9F" secondAttribute="height" multiplier="1:1" id="EwH-s7-TAh"/>
                                 </constraints>
                                 <state key="normal" image="Combined Shape"/>
+                                <connections>
+                                    <action selector="buttonTopRight:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OSj-48-MBE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vft-HW-t1j" userLabel="ButtonBottomRight">
                                 <rect key="frame" x="221.66666666666666" y="440" width="47.999999999999972" height="48"/>
@@ -244,6 +250,9 @@
                                     <constraint firstAttribute="width" secondItem="vft-HW-t1j" secondAttribute="height" multiplier="1:1" id="UYQ-Ut-Uw6"/>
                                 </constraints>
                                 <state key="normal" image="Combined Shape"/>
+                                <connections>
+                                    <action selector="buttonBottomRight:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jas-kh-4Yr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4S-ho-k4J" userLabel="ButtonTopLong">
                                 <rect key="frame" x="163.66666666666666" y="324" width="48" height="48"/>
@@ -252,6 +261,9 @@
                                     <constraint firstAttribute="width" secondItem="N4S-ho-k4J" secondAttribute="height" multiplier="1:1" id="3wA-a4-Enh"/>
                                 </constraints>
                                 <state key="normal" image="Combined Shape"/>
+                                <connections>
+                                    <action selector="buttonTopLong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Kj-yR-5nd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TR-75-1MO" userLabel="ButtonBottomLong">
                                 <rect key="frame" x="163.66666666666666" y="440" width="48" height="48"/>
@@ -260,6 +272,9 @@
                                     <constraint firstAttribute="width" secondItem="5TR-75-1MO" secondAttribute="height" multiplier="1:1" id="zYX-vV-9H3"/>
                                 </constraints>
                                 <state key="normal" image="Combined Shape"/>
+                                <connections>
+                                    <action selector="buttonBottomLong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VpW-eG-0n9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3D-LE-730" userLabel="ButtonBottomLeft">
                                 <rect key="frame" x="105.66666666666669" y="440" width="48" height="48"/>
@@ -268,6 +283,9 @@
                                     <constraint firstAttribute="width" secondItem="X3D-LE-730" secondAttribute="height" multiplier="1:1" id="6Q6-lH-dRq"/>
                                 </constraints>
                                 <state key="normal" image="Combined Shape"/>
+                                <connections>
+                                    <action selector="buttonBottomLeft:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nhg-BA-cZ5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.71764705880000002" green="0.84313725490000002" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -424,7 +442,7 @@
                     <viewLayoutGuide key="safeArea" id="sgL-jC-1ih"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-4882.3999999999996" y="-736.28185907046486"/>
+            <point key="canvasLocation" x="-5066" y="-698"/>
         </scene>
     </scenes>
     <resources>
