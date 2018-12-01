@@ -11,6 +11,18 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var topLeftImageView: UIImageView!
     
+    @IBOutlet weak var topRightImageView: UIImageView!
+    
+    @IBOutlet weak var bottomLeftImageView: UIImageView!
+    
+    @IBOutlet weak var bottomRightImageView: UIImageView!
+    
+    @IBOutlet weak var longTopImageView: UIImageView!
+    
+    
+    @IBOutlet weak var longBottomImageView: UIImageView!
+    
+   
     @IBOutlet weak var selectedView2_1: UIView!
     
     @IBOutlet weak var selectedView2_2: UIView!
@@ -71,9 +83,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
    
     // Buttons add pictures
     
+    var  photoToDisplay = UIImageView()
     
     
     @IBAction func buttonTopLeft(_ sender: UIButton) {
+        photoToDisplay = topLeftImageView
+        addPicker()
+        buttonTopLeft.alpha = 0.015
+        print("topleft")
+    }
+    
+    func addPicker(){
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         
@@ -103,15 +123,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // 3.1. Action for Cancel
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion : nil)
-    print("topleft")
+        print("topleft")
     }
+    
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        topLeftImageView.image = image
+        photoToDisplay.image = image
         // What to do when operation is done
         picker.dismiss(animated: true, completion: nil)
-        print("ici")
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -120,25 +141,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func buttonTopRight(_ sender: UIButton) {
+        photoToDisplay = topRightImageView
+        addPicker()
+        buttonTopRight.alpha = 0.15
         print("topright")
     }
     
     
     @IBAction func buttonBottomLeft(_ sender: UIButton) {
+        photoToDisplay = bottomLeftImageView
+        addPicker()
         print("bottomLeft")
+        buttomBottomLeft.alpha = 0.15
     }
     
     @IBAction func buttonBottomRight(_ sender: UIButton) {
+        photoToDisplay = bottomRightImageView
+        addPicker()
         print("bottomRight")
+        buttomBottomRight.alpha = 0.15
     }
     
     
     @IBAction func buttonTopLong(_ sender: UIButton) {
+        photoToDisplay = longTopImageView
+        addPicker()
         print("longtop")
+        buttomTopLong.alpha = 0.15
     }
     
     @IBAction func buttonBottomLong(_ sender: UIButton) {
+        photoToDisplay = longBottomImageView
+        addPicker()
         print(("longBottom"))
+        buttomBottomLong.alpha = 0.15
     }
     
     override func viewDidLoad() {
