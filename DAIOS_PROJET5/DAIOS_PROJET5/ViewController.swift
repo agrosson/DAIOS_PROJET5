@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @IBOutlet weak var topLeftImageView: UIImageView!
+    
     @IBOutlet weak var selectedView2_1: UIView!
     
     @IBOutlet weak var selectedView2_2: UIView!
@@ -73,7 +74,49 @@ class ViewController: UIViewController {
     
     
     @IBAction func buttonTopLeft(_ sender: UIButton) {
-        print("topleft")
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        // 3. Create a Alert to display Action
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
+        
+        // 3.1. Action for Camera
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action: UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                // Create picker with source . Camera
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true,completion: nil)
+            }
+            else {
+                let actionSheet = UIAlertController(title: "Camera non disponible", message: "Appuyer sur Cancel", preferredStyle: .alert)
+                actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(actionSheet, animated: true, completion : nil)
+            }
+            
+            
+        }))
+        // 3.1. Action for Library
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction) in
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true,completion: nil)
+        }))
+        // 3.1. Action for Cancel
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion : nil)
+    print("topleft")
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        topLeftImageView.image = image
+        // What to do when operation is done
+        picker.dismiss(animated: true, completion: nil)
+        print("ici")
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // What to do when operation is done
+        picker.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func buttonTopRight(_ sender: UIButton) {
