@@ -9,50 +9,46 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // list of imageViews outlets to display photos
     @IBOutlet weak var topLeftImageView: UIImageView!
-    
     @IBOutlet weak var topRightImageView: UIImageView!
-    
     @IBOutlet weak var bottomLeftImageView: UIImageView!
-    
     @IBOutlet weak var bottomRightImageView: UIImageView!
-    
     @IBOutlet weak var longTopImageView: UIImageView!
-    
-    
     @IBOutlet weak var longBottomImageView: UIImageView!
     
-   
+   // list of imageViews outlets to choose layout
     @IBOutlet weak var selectedView2_1: UIView!
-    
     @IBOutlet weak var selectedView2_2: UIView!
-    
     @IBOutlet weak var selectedViex1_2: UIView!
+    
+    // Global views and labels
     @IBOutlet weak var swipeLabel: UILabel!
     @IBOutlet weak var centralView: CentralView!
     @IBOutlet weak var swipeStack: UIStackView!
     @IBOutlet weak var labelInstagrid: UILabel!
    
-    // outlet buttons
+    // outlet buttons to add images
     @IBOutlet weak var buttonTopLeft: UIButton!
     @IBOutlet weak var buttonTopRight: UIButton!
-    @IBOutlet weak var buttomBottomLeft: UIButton!
-    @IBOutlet weak var buttomBottomRight: UIButton!
-    @IBOutlet weak var buttomTopLong: UIButton!
-    @IBOutlet weak var buttomBottomLong: UIButton!
+    @IBOutlet weak var buttonBottomLeft: UIButton!
+    @IBOutlet weak var buttonBottomRight: UIButton!
+    @IBOutlet weak var buttonTopLong: UIButton!
+    @IBOutlet weak var buttonBottomLong: UIButton!
     
-    
+    // list of button actions to choose layout
     @IBAction func topRectangleButton(_ sender: UIButton) {
         centralView.centralViewDisplay = .rectangleTop
         selectedView2_1.isHidden = true
         selectedView2_2.isHidden = true
         selectedViex1_2.isHidden = false
-        buttomTopLong.isHidden = false
-        buttomBottomLeft.isHidden = false
-        buttomBottomRight.isHidden = false
+        buttonTopLong.isHidden = false
+        buttonBottomLeft.isHidden = false
+        buttonBottomRight.isHidden = false
         buttonTopLeft.isHidden = true
         buttonTopRight.isHidden = true
-        buttomBottomLong.isHidden = true
+        buttonBottomLong.isHidden = true
     }
     
     @IBAction func squareButton(_ sender: UIButton) {
@@ -60,38 +56,80 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         selectedView2_1.isHidden = true
         selectedView2_2.isHidden = false
         selectedViex1_2.isHidden = true
-        buttomTopLong.isHidden = true
-        buttomBottomLeft.isHidden = false
-        buttomBottomRight.isHidden = false
+        buttonTopLong.isHidden = true
+        buttonBottomLeft.isHidden = false
+        buttonBottomRight.isHidden = false
         buttonTopLeft.isHidden = false
         buttonTopRight.isHidden = false
-        buttomBottomLong.isHidden = true
+        buttonBottomLong.isHidden = true
     }
     
     @IBAction func bottomRectangleButton(_ sender: UIButton) {centralView.centralViewDisplay = .rectangleBotton
         selectedView2_1.isHidden = false
         selectedView2_2.isHidden = true
         selectedViex1_2.isHidden = true
-        buttomTopLong.isHidden = true
-        buttomBottomLeft.isHidden = true
-        buttomBottomRight.isHidden = true
+        buttonTopLong.isHidden = true
+        buttonBottomLeft.isHidden = true
+        buttonBottomRight.isHidden = true
         buttonTopLeft.isHidden = false
         buttonTopRight.isHidden = false
-        buttomBottomLong.isHidden = false
+        buttonBottomLong.isHidden = false
         
     }
    
-    // Buttons add pictures
+    // Variable to track image get from UIPicker
     
     var  photoToDisplay = UIImageView()
+    var  buttonToTrack = UIButton()
     
-    
+    // List of button actions to select image from library
     @IBAction func buttonTopLeft(_ sender: UIButton) {
         photoToDisplay = topLeftImageView
+        buttonToTrack = buttonTopLeft
         addPicker()
         buttonTopLeft.alpha = 0.015
         print("topleft")
     }
+    @IBAction func buttonTopRight(_ sender: UIButton) {
+        photoToDisplay = topRightImageView
+        buttonToTrack = buttonTopRight
+        addPicker()
+        buttonTopRight.alpha = 0.015
+        print("topright")
+    }
+    
+    @IBAction func buttonBottomLeft(_ sender: UIButton) {
+        photoToDisplay = bottomLeftImageView
+        buttonToTrack = buttonBottomLeft
+        addPicker()
+        print("bottomLeft")
+        buttonBottomLeft.alpha = 0.015
+    }
+    
+    @IBAction func buttonBottomRight(_ sender: UIButton) {
+        photoToDisplay = bottomRightImageView
+        buttonToTrack = buttonBottomRight
+        addPicker()
+        print("bottomRight")
+        buttonBottomRight.alpha = 0.015
+    }
+  
+    @IBAction func buttonTopLong(_ sender: UIButton) {
+        photoToDisplay = longTopImageView
+        buttonToTrack = buttonTopLong
+        addPicker()
+        print("longtop")
+        buttonTopLong.alpha = 0.015
+    }
+    @IBAction func buttonBottomLong(_ sender: UIButton) {
+        photoToDisplay = longBottomImageView
+        buttonToTrack = buttonBottomLong
+        addPicker()
+        print(("longBottom"))
+        buttonBottomLong.alpha = 0.015
+       
+    }
+   
     
     func addPicker(){
         let imagePickerController = UIImagePickerController()
@@ -115,22 +153,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             
         }))
-        // 3.1. Action for Library
+        //  Action for Library
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction) in
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true,completion: nil)
         }))
-        // 3.1. Action for Cancel
+        // Action for Delete
+        actionSheet.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
+            let actionSheet = UIAlertController(title: "L'image est supprimée", message: "Appuyer sur Cancel", preferredStyle: .alert)
+            self.buttonToTrack.alpha = 1
+            self.photoToDisplay.image = nil
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(actionSheet, animated: true, completion : nil)
+        }))
+        
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(actionSheet, animated: true, completion : nil)
-        print("topleft")
-    }
+        self.present(actionSheet, animated: true, completion : { () -> () in
+            if  self.photoToDisplay.image == nil {self.buttonToTrack.alpha = CGFloat(1)}
+        })
     
+    }
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         photoToDisplay.image = image
+        buttonToTrack.alpha = 0.015
+        if photoToDisplay.image == nil {buttonToTrack.alpha = CGFloat(1)}
         // What to do when operation is done
         picker.dismiss(animated: true, completion: nil)
     }
@@ -139,44 +188,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // What to do when operation is done
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func buttonTopRight(_ sender: UIButton) {
-        photoToDisplay = topRightImageView
-        addPicker()
-        buttonTopRight.alpha = 0.15
-        print("topright")
-    }
-    
-    
-    @IBAction func buttonBottomLeft(_ sender: UIButton) {
-        photoToDisplay = bottomLeftImageView
-        addPicker()
-        print("bottomLeft")
-        buttomBottomLeft.alpha = 0.15
-    }
-    
-    @IBAction func buttonBottomRight(_ sender: UIButton) {
-        photoToDisplay = bottomRightImageView
-        addPicker()
-        print("bottomRight")
-        buttomBottomRight.alpha = 0.15
-    }
-    
-    
-    @IBAction func buttonTopLong(_ sender: UIButton) {
-        photoToDisplay = longTopImageView
-        addPicker()
-        print("longtop")
-        buttomTopLong.alpha = 0.15
-    }
-    
-    @IBAction func buttonBottomLong(_ sender: UIButton) {
-        photoToDisplay = longBottomImageView
-        addPicker()
-        print(("longBottom"))
-        buttomBottomLong.alpha = 0.15
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
        launchApp()
@@ -200,9 +212,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private func launchApp(){
 
         centralView.centralViewDisplay = .rectangleBotton
-        buttomTopLong.isHidden = true
-        buttomBottomLeft.isHidden = true
-        buttomBottomRight.isHidden = true
+        buttonTopLong.isHidden = true
+        buttonBottomLeft.isHidden = true
+        buttonBottomRight.isHidden = true
    
     }
     
