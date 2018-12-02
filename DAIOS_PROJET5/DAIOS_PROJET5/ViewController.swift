@@ -40,52 +40,64 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // list of button actions to choose layout
     @IBAction func topRectangleButton(_ sender: UIButton) {
         centralView.centralViewDisplay = .rectangleTop
-        selectedView2_1.isHidden = true
-        selectedView2_2.isHidden = true
-        selectedViex1_2.isHidden = false
-        buttonTopLong.isHidden = false
-        buttonBottomLeft.isHidden = false
-        buttonBottomRight.isHidden = false
-        buttonTopLeft.isHidden = true
-        buttonTopRight.isHidden = true
-        buttonBottomLong.isHidden = true
-        if centralViewVisibility == .offScreen {
-            combinedShapedHidden()
-        }
+        showButtons()
     }
     
     @IBAction func squareButton(_ sender: UIButton) {
         centralView.centralViewDisplay = .square
-        selectedView2_1.isHidden = true
-        selectedView2_2.isHidden = false
-        selectedViex1_2.isHidden = true
-        buttonTopLong.isHidden = true
-        buttonBottomLeft.isHidden = false
-        buttonBottomRight.isHidden = false
-        buttonTopLeft.isHidden = false
-        buttonTopRight.isHidden = false
-        buttonBottomLong.isHidden = true
-        if centralViewVisibility == .offScreen {
-            combinedShapedHidden()
-        }
+        showButtons()
     }
     
-    @IBAction func bottomRectangleButton(_ sender: UIButton) {centralView.centralViewDisplay = .rectangleBotton
-        selectedView2_1.isHidden = false
-        selectedView2_2.isHidden = true
-        selectedViex1_2.isHidden = true
-        buttonTopLong.isHidden = true
-        buttonBottomLeft.isHidden = true
-        buttonBottomRight.isHidden = true
-        buttonTopLeft.isHidden = false
-        buttonTopRight.isHidden = false
-        buttonBottomLong.isHidden = false
-        if centralViewVisibility == .offScreen {
-            combinedShapedHidden()
-        }
-        
+    @IBAction func bottomRectangleButton(_ sender: UIButton) {
+        centralView.centralViewDisplay = .rectangleBotton
+        showButtons()
     }
    
+    // rule to show buttons
+    private func showButtons(){
+        combinedShapedAlphaNil()
+        combinedShapedHidden()
+        switch self.centralView.centralViewDisplay {
+        case .rectangleBotton:
+            selectedView2_1.isHidden = false
+            selectedView2_2.isHidden = true
+            selectedViex1_2.isHidden = true
+            buttonTopLeft.isHidden = false
+            buttonBottomLong.isHidden = false
+            buttonTopRight.isHidden = false
+            
+            if topLeftImageView.image == nil {buttonTopLeft.alpha = 1}
+            if topRightImageView.image == nil {buttonTopRight.alpha = 1}
+            if longBottomImageView.image == nil {buttonBottomLong.alpha = 1}
+            
+        case .rectangleTop:
+            selectedView2_1.isHidden = true
+            selectedView2_2.isHidden = true
+            selectedViex1_2.isHidden = false
+            buttonTopLong.isHidden = false
+            buttonBottomLeft.isHidden = false
+            buttonBottomRight.isHidden = false
+            
+            if bottomLeftImageView.image == nil {buttonBottomLeft.alpha = 1}
+            if bottomRightImageView.image == nil {buttonBottomRight.alpha = 1}
+            if longTopImageView.image == nil {buttonTopLong.alpha = 1}
+        
+        case .square:
+            selectedView2_1.isHidden = true
+            selectedView2_2.isHidden = false
+            selectedViex1_2.isHidden = true
+            buttonTopLeft.isHidden = false
+            buttonTopRight.isHidden = false
+            buttonBottomLeft.isHidden = false
+            buttonBottomRight.isHidden = false
+            if bottomLeftImageView.image == nil {buttonBottomLeft.alpha = 1}
+            if bottomRightImageView.image == nil {buttonBottomRight.alpha = 1}
+            if topLeftImageView.image == nil {buttonTopLeft.alpha = 1}
+            if topRightImageView.image == nil {buttonTopRight.alpha = 1}
+        }
+    }
+
+    
     // Variable to track image get from UIPicker
     
     var  photoToDisplay = UIImageView()
@@ -98,14 +110,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         photoToDisplay = topLeftImageView
         buttonToTrack = buttonTopLeft
         addPicker()
-        buttonTopLeft.alpha = 0.015
+        showButtons()
         print("topleft")
     }
+    
     @IBAction func buttonTopRight(_ sender: UIButton) {
         photoToDisplay = topRightImageView
         buttonToTrack = buttonTopRight
         addPicker()
-        buttonTopRight.alpha = 0.015
+        showButtons()
         print("topright")
     }
     
@@ -114,7 +127,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonToTrack = buttonBottomLeft
         addPicker()
         print("bottomLeft")
-        buttonBottomLeft.alpha = 0.015
+        showButtons()
     }
     
     @IBAction func buttonBottomRight(_ sender: UIButton) {
@@ -122,7 +135,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonToTrack = buttonBottomRight
         addPicker()
         print("bottomRight")
-        buttonBottomRight.alpha = 0.015
+        showButtons()
     }
   
     @IBAction func buttonTopLong(_ sender: UIButton) {
@@ -131,18 +144,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         addPicker()
         print("longtop")
         buttonTopLong.alpha = 0.015
+        showButtons()
     }
+    
     @IBAction func buttonBottomLong(_ sender: UIButton) {
         photoToDisplay = longBottomImageView
         buttonToTrack = buttonBottomLong
         addPicker()
         print(("longBottom"))
-        buttonBottomLong.alpha = 0.015
-        if centralView.bounds.minX < 0 || centralView.bounds.minY < 0 {
-            combinedShapedHidden()
-        }
+        showButtons()
     }
-   
     
     func addPicker(){
         let imagePickerController = UIImagePickerController()
@@ -163,14 +174,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 self.present(actionSheet, animated: true, completion : nil)
             }
-            
-            
         }))
+        
         //  Action for Library
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction) in
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true,completion: nil)
         }))
+        
         // Action for Delete
         actionSheet.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
             let actionSheet = UIAlertController(title: "L'image est supprimée", message: "Appuyer sur Cancel", preferredStyle: .alert)
@@ -181,18 +192,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }))
         
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(actionSheet, animated: true, completion : { () -> () in
-            if  self.photoToDisplay.image == nil {self.buttonToTrack.alpha = CGFloat(1)}
-        })
-    
+        self.present(actionSheet, animated: true, completion : nil)
     }
-    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         photoToDisplay.image = image
-        buttonToTrack.alpha = 0.015
-        if photoToDisplay.image == nil {buttonToTrack.alpha = CGFloat(1)}
+       buttonToTrack.alpha = 0.015
         // What to do when operation is done
         picker.dismiss(animated: true, completion: nil)
     }
@@ -201,26 +207,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // What to do when operation is done
         picker.dismiss(animated: true, completion: nil)
     }
-
-    var centralViewVisibility: OnOff = .onScreen {
-        didSet {
-            viewOnScreen(centralViewVisibility)
-        }
-    }
-    
-    enum OnOff {
-        case onScreen, offScreen
-    }
-    
-    private func viewOnScreen(_ state: OnOff) {
-        switch state {
-        case .onScreen:
-            print("nothing so far")
-        case .offScreen:
-            combinedShapedHidden()
-        }
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -233,36 +219,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             moveCentralViewLeft()
         }
     }
+    
     /** Swipe Action Up
     
     */
     @IBAction func swipeUpAction(_ sender: UISwipeGestureRecognizer) {
-      
         if UIDevice.current.orientation.isPortrait {
             print("go to up")
             moveCentralViewUp()
         }
-
     }
     
     private func moveCentralViewUp(){
-        self.combinedShapedHidden()
+       self.combinedShapedHidden()
         let go = CGAffineTransform(translationX: 0, y: -2*screenHeight)
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: 1, animations: {
             self.centralView.transform = go
         }) { (true) in
-            self.centralViewVisibility = .offScreen
             self.showActivityController()
         }
     }
     
     private func moveCentralViewLeft(){
-        self.combinedShapedHidden()
+       self.combinedShapedHidden()
         let go = CGAffineTransform(translationX: -2*screenWidth, y: 0)
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: 1, animations: {
             self.centralView.transform = go
         }) { (true) in
-            self.centralViewVisibility = .offScreen
             self.showActivityController()
         }
     }
@@ -271,10 +254,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let activityController = UIActivityViewController(activityItems: [centralView.renderedImage!], applicationActivities: nil)
         present(activityController, animated: true, completion:{
         self.centralView.transform = .identity
-        self.centralViewVisibility = .onScreen
-        
+        self.showButtons()
         })
-        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -282,7 +263,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             swipeLabel.text = "Swipe left to share"
         } else {
             swipeLabel.text = "Swipe up to share"
-            
         }
     }
     /**
@@ -292,13 +272,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      The sequence is the following
      
      */
+    
     private func launchApp(){
-
         centralView.centralViewDisplay = .rectangleBotton
-        buttonTopLong.isHidden = true
-        buttonBottomLeft.isHidden = true
-        buttonBottomRight.isHidden = true
-   
+        showButtons()
     }
     
     private func combinedShapedAlphaNil() {
@@ -309,6 +286,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonBottomLong.alpha = 0.015
         buttonBottomRight.alpha = 0.015
     }
+    private func combinedShapedAlpha1() {
+        buttonTopRight.alpha = 1
+        buttonTopLeft.alpha = 1
+        buttonTopLong.alpha = 1
+        buttonBottomLeft.alpha = 1
+        buttonBottomLong.alpha = 1
+        buttonBottomRight.alpha = 1
+    }
     
     private func combinedShapedHidden(){
         buttonTopRight.isHidden = true
@@ -318,6 +303,5 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonBottomLong.isHidden = true
         buttonBottomRight.isHidden = true
     }
-    
 }
 
