@@ -252,6 +252,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.centralView.transform = go
         }) { (true) in
             self.centralViewVisibility = .offScreen
+            self.showActivityController()
         }
     }
     
@@ -262,7 +263,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.centralView.transform = go
         }) { (true) in
             self.centralViewVisibility = .offScreen
+            self.showActivityController()
         }
+    }
+    
+    private func showActivityController() {
+        let activityController = UIActivityViewController(activityItems: [centralView.renderedImage!], applicationActivities: nil)
+        present(activityController, animated: true, completion:{
+        self.centralView.transform = .identity
+        self.centralViewVisibility = .onScreen
+        
+        })
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -306,5 +318,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonBottomLong.isHidden = true
         buttonBottomRight.isHidden = true
     }
+    
 }
 
