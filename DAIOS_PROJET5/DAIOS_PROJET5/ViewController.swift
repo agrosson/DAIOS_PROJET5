@@ -49,6 +49,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonTopLeft.isHidden = true
         buttonTopRight.isHidden = true
         buttonBottomLong.isHidden = true
+        if centralViewVisibility == .offScreen {
+            combinedShapedHidden()
+        }
     }
     
     @IBAction func squareButton(_ sender: UIButton) {
@@ -62,6 +65,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonTopLeft.isHidden = false
         buttonTopRight.isHidden = false
         buttonBottomLong.isHidden = true
+        if centralViewVisibility == .offScreen {
+            combinedShapedHidden()
+        }
     }
     
     @IBAction func bottomRectangleButton(_ sender: UIButton) {centralView.centralViewDisplay = .rectangleBotton
@@ -74,6 +80,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonTopLeft.isHidden = false
         buttonTopRight.isHidden = false
         buttonBottomLong.isHidden = false
+        if centralViewVisibility == .offScreen {
+            combinedShapedHidden()
+        }
         
     }
    
@@ -81,6 +90,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var  photoToDisplay = UIImageView()
     var  buttonToTrack = UIButton()
+    private let screenHeight = UIScreen.main.bounds.height
+    private let screenWidth = UIScreen.main.bounds.width
     
     // List of button actions to select image from library
     @IBAction func buttonTopLeft(_ sender: UIButton) {
@@ -127,7 +138,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         addPicker()
         print(("longBottom"))
         buttonBottomLong.alpha = 0.015
-       
+        if centralView.bounds.minX < 0 || centralView.bounds.minY < 0 {
+            combinedShapedHidden()
+        }
     }
    
     
@@ -189,8 +202,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         picker.dismiss(animated: true, completion: nil)
     }
 
+    var centralViewVisibility: OnOff = .onScreen {
+        didSet {
+            viewOnScreen(centralViewVisibility)
+        }
+    }
     
+    enum OnOff {
+        case onScreen, offScreen
+    }
     
+    private func viewOnScreen(_ state: OnOff) {
+        switch state {
+        case .onScreen:
+            print("nothing so far")
+        case .offScreen:
+            combinedShapedHidden()
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -201,6 +230,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func swipeLeftAction(_ sender: UISwipeGestureRecognizer) {
         if UIDevice.current.orientation.isLandscape {
             print("go to left")
+            moveCentralViewLeft()
         }
     }
     /** Swipe Action Up
@@ -209,8 +239,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func swipeUpAction(_ sender: UISwipeGestureRecognizer) {
       
         if UIDevice.current.orientation.isPortrait {
-            print("go to up")}
-        
+            print("go to up")
+            moveCentralViewUp()
+        }
+
+    }
+    
+    private func moveCentralViewUp(){
+        self.combinedShapedHidden()
+        let go = CGAffineTransform(translationX: 0, y: -2*screenHeight)
+        UIView.animate(withDuration: 2, animations: {
+            self.centralView.transform = go
+        }) { (true) in
+            self.centralViewVisibility = .offScreen
+        }
+    }
+    
+    private func moveCentralViewLeft(){
+        self.combinedShapedHidden()
+        let go = CGAffineTransform(translationX: -2*screenWidth, y: 0)
+        UIView.animate(withDuration: 2, animations: {
+            self.centralView.transform = go
+        }) { (true) in
+            self.centralViewVisibility = .offScreen
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -237,6 +289,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
    
     }
     
+    private func combinedShapedAlphaNil() {
+        buttonTopRight.alpha = 0.015
+        buttonTopLeft.alpha = 0.015
+        buttonTopLong.alpha = 0.015
+        buttonBottomLeft.alpha = 0.015
+        buttonBottomLong.alpha = 0.015
+        buttonBottomRight.alpha = 0.015
+    }
     
+    private func combinedShapedHidden(){
+        buttonTopRight.isHidden = true
+        buttonTopLeft.isHidden = true
+        buttonTopLong.isHidden = true
+        buttonBottomLeft.isHidden = true
+        buttonBottomLong.isHidden = true
+        buttonBottomRight.isHidden = true
+    }
 }
 
