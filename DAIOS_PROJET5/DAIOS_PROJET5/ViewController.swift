@@ -189,9 +189,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         picker.dismiss(animated: true, completion: nil)
     }
 
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        launchApp()
+    }
+    /// Swipe Action Left
+    @IBAction func swipeLeftAction(_ sender: UISwipeGestureRecognizer) {
+        if UIDevice.current.orientation.isLandscape {
+            print("go to left")
+        }
+    }
+    /** Swipe Action Up
+    
+    */
+    @IBAction func swipeUpAction(_ sender: UISwipeGestureRecognizer) {
+      
+        if UIDevice.current.orientation.isPortrait {
+            print("go to up")}
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

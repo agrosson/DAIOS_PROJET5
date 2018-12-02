@@ -289,6 +289,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.71764705880000002" green="0.84313725490000002" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="L0n-H6-PJR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="04K-4R-Idj"/>
                             <constraint firstItem="vft-HW-t1j" firstAttribute="centerX" secondItem="1Vo-Ph-YtO" secondAttribute="centerX" id="0Ne-2P-eht"/>
@@ -409,6 +410,10 @@
                                 <include reference="WEZ-H2-hmk"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="oy0-3Q-nLN" appends="YES" id="6do-nB-2ld"/>
+                            <outletCollection property="gestureRecognizers" destination="ZFD-YE-uO8" appends="YES" id="jJT-eF-AKW"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -435,8 +440,18 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="oy0-3Q-nLN" userLabel="UpSwipeGestureRecognizer">
+                    <connections>
+                        <action selector="swipeUpAction:" destination="BYZ-38-t0r" id="pC4-52-bCQ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="ZFD-YE-uO8" userLabel="LeftSwipeGestureRecognizer">
+                    <connections>
+                        <action selector="swipeLeftAction:" destination="BYZ-38-t0r" id="ETI-7x-5Jf"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-5202" y="-1133"/>
+            <point key="canvasLocation" x="-7330" y="-1262"/>
         </scene>
     </scenes>
     <resources>
