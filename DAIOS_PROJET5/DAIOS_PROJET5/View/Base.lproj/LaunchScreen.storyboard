@@ -23,32 +23,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon 180*180" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0BG-qF-8Rl">
-                                <rect key="frame" x="97.5" y="243.5" width="180" height="180"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oio-5t-dcR">
                                 <rect key="frame" x="128.5" y="438.5" width="118.5" height="39"/>
                                 <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon 180*180.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gYw-4F-QtT">
+                                <rect key="frame" x="97.5" y="243.5" width="180" height="180"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="ThU-6X-mHs"/>
+                                    <constraint firstAttribute="width" constant="180" id="i7g-K6-7xs"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.84313725490196079" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="oio-5t-dcR" firstAttribute="top" secondItem="0BG-qF-8Rl" secondAttribute="bottom" constant="15" id="Zhc-pq-krc"/>
-                            <constraint firstItem="0BG-qF-8Rl" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="iL4-cD-zV6"/>
-                            <constraint firstItem="oio-5t-dcR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xfm-io-oMQ"/>
-                            <constraint firstItem="0BG-qF-8Rl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zGJ-uv-sa3"/>
+                            <constraint firstItem="gYw-4F-QtT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0pH-bL-VCS"/>
+                            <constraint firstItem="oio-5t-dcR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KCn-7e-UuB"/>
+                            <constraint firstItem="oio-5t-dcR" firstAttribute="top" secondItem="gYw-4F-QtT" secondAttribute="bottom" constant="15" id="hVv-OH-BDm"/>
+                            <constraint firstItem="gYw-4F-QtT" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="kGV-Gx-hcS"/>
+                            <constraint firstItem="gYw-4F-QtT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ket-QF-mB5"/>
+                            <constraint firstItem="oio-5t-dcR" firstAttribute="centerX" secondItem="gYw-4F-QtT" secondAttribute="centerX" id="mBi-uT-827"/>
+                            <constraint firstItem="gYw-4F-QtT" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ytd-xo-rIn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="350" y="566"/>
+            <point key="canvasLocation" x="345" y="392"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Icon 180*180" width="180" height="180"/>
+        <image name="Icon 180*180.png" width="180" height="180"/>
     </resources>
 </document>

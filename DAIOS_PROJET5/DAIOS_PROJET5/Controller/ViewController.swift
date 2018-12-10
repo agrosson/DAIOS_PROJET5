@@ -192,10 +192,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print(("longBottom"))
         showButtons()
     }
-    
+    /**
+     Function that creates a imagePicker and UIAlertController
+     */
     func addPicker() {
+        // Create a UIImagePickerController
         let imagePickerController = UIImagePickerController()
+        // Delegate to the viewController
         imagePickerController.delegate = self
+        // Create a UIAlertController
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
         //  Action for Camera
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action: UIAlertAction) in
@@ -227,7 +232,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion : nil)
     }
-    
+    /**
+     Function that tells the delegate that the user picked a still image or movie and set the image picked as the photo to display on image view choosen.
+     */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         photoToDisplay.image = image
@@ -235,7 +242,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // What to do when operation is done
         picker.dismiss(animated: true, completion: nil)
     }
-    
+    /**
+     Function that tells the delegate that the user cancelled the pick operation.
+     */
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         // What to do when operation is done
         picker.dismiss(animated: true, completion: nil)
@@ -245,6 +254,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
        launchApp()
     }
+   
     /// Swipe Action Left
     @IBAction func swipeLeftAction(_ sender: UISwipeGestureRecognizer) {
         if UIDevice.current.orientation.isLandscape {
@@ -254,7 +264,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     /** Swipe Action Up
-    
     */
     @IBAction func swipeUpAction(_ sender: UISwipeGestureRecognizer) {
         if UIDevice.current.orientation.isPortrait {
@@ -262,27 +271,54 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             moveCentralViewUp()
         }
     }
-    
+    /**
+     Function that executes actions when user swipe up
+     - Notes:
+     1. Hide buttons that add photos on imageView
+     2. Create a animation and move centralView upward
+     3. Display a UIActivityViewController
+     */
     private func moveCentralViewUp(){
-       self.combinedShapedHidden()
-        let go = CGAffineTransform(translationX: 0, y: -2*screenHeight)
-        UIView.animate(withDuration: 1, animations: {
-            self.centralView.transform = go
-        }) { (true) in
-            self.showActivityController()
-        }
+        self.combinedShapedHidden()
+        rotate360()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            let moveUp = CGAffineTransform(translationX: 0, y: -2*self.screenHeight)
+            UIView.animate(withDuration: 0.8, animations: {
+                self.centralView.transform = moveUp
+            }) { (true) in
+                self.showActivityController()
+            }
+        })
+
+       // showButtons()
+
     }
-    
+    /**
+     Function that executes actions when user swipe left
+     - Notes:
+     1. Hide buttons that add photos on imageView
+     2. Create a animation and move centralView left
+     3. Display a UIActivityViewController
+     */
     private func moveCentralViewLeft(){
-       self.combinedShapedHidden()
-        let go = CGAffineTransform(translationX: -2*screenWidth, y: 0)
-        UIView.animate(withDuration: 1, animations: {
-            self.centralView.transform = go
-        }) { (true) in
-            self.showActivityController()
-        }
+        self.combinedShapedHidden()
+        rotate360()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            let go = CGAffineTransform(translationX: -2*self.screenWidth, y: 0)
+            UIView.animate(withDuration: 1, animations: {
+                self.centralView.transform = go
+            }) { (true) in
+                self.showActivityController()
+            }
+        })
     }
-    
+    /**
+     Function that display a UIActivityViewController and share centralView.renderedImage! as an image
+     - Notes:
+     1. Share centralView.renderedImage! as an image
+     2. Move centralView back to the center when UIActivityViewController in completed
+     3. Launch showButtons
+     */
     private func showActivityController() {
         let activityController = UIActivityViewController(activityItems: [centralView.renderedImage!], applicationActivities: nil)
         present(activityController, animated: true, completion:{
@@ -290,7 +326,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.showButtons()
         })
     }
-    
+    /**
+     Function that creates a 360° rotation animation on centralView
+     */
+    private func rotate360() {
+        let move360 = CABasicAnimation(keyPath: "transform.rotation")
+        move360.fromValue = 0
+        move360.toValue = 2*CGFloat.pi
+        move360.duration = 1
+        self.centralView.layer.add(move360, forKey: nil)
+    }
+    /**
+     Override viewWillTransition to modify outlet depending on device orientation
+     */
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
             swipeLabel.text = "Swipe left to share"
@@ -300,17 +348,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     /**
      Function that launches the App and makes initial layout
-     
-     # The sequence is the following #
-     The sequence is the following
-     
      */
-    
     private func launchApp(){
         centralView.centralViewDisplay = .rectangleBotton
         showButtons()
     }
-    
+    /**
+     Function that fades out combinedShaped (buttons to add pictures) but buttons still active
+     */
     private func combinedShapedAlphaNil() {
         buttonTopRight.alpha = 0.015
         buttonTopLeft.alpha = 0.015
@@ -319,7 +364,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonBottomLong.alpha = 0.015
         buttonBottomRight.alpha = 0.015
     }
-    
+    /**
+     Function that hiddes combinedShaped (buttons to add pictures):  buttons not active
+     */
     private func combinedShapedHidden(){
         buttonTopRight.isHidden = true
         buttonTopLeft.isHidden = true
