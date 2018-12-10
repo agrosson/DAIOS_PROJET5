@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     // list of imageViews outlets to display photos
     @IBOutlet weak var topLeftImageView: UIImageView!
     @IBOutlet weak var topRightImageView: UIImageView!
@@ -17,18 +16,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomRightImageView: UIImageView!
     @IBOutlet weak var longTopImageView: UIImageView!
     @IBOutlet weak var longBottomImageView: UIImageView!
-    
    // list of imageViews outlets to choose layout
-    @IBOutlet weak var selectedView2_1: UIView!
-    @IBOutlet weak var selectedView2_2: UIView!
-    @IBOutlet weak var selectedViex1_2: UIView!
-    
+    @IBOutlet weak var selectedView2and1: UIView!
+    @IBOutlet weak var selectedView2and2: UIView!
+    @IBOutlet weak var selectedViex1and2: UIView!
     // Global views and labels
     @IBOutlet weak var swipeLabel: UILabel!
     @IBOutlet weak var centralView: CentralView!
     @IBOutlet weak var swipeStack: UIStackView!
     @IBOutlet weak var labelInstagrid: UILabel!
-   
     // outlet buttons to add images
     @IBOutlet weak var buttonTopLeft: UIButton!
     @IBOutlet weak var buttonTopRight: UIButton!
@@ -36,84 +32,114 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var buttonBottomRight: UIButton!
     @IBOutlet weak var buttonTopLong: UIButton!
     @IBOutlet weak var buttonBottomLong: UIButton!
-    
     // list of button actions to choose layout
+    /**
+     Function that modifies layout of centraView with rectangle view on top
+     - Parameter sender: the button that is pressed
+     */
     @IBAction func topRectangleButton(_ sender: UIButton) {
         centralView.centralViewDisplay = .rectangleTop
         showButtons()
     }
-    
+    /**
+     Function that modifies layout of centraView with 4 squares
+     - Parameter sender: the button that is pressed
+     */
     @IBAction func squareButton(_ sender: UIButton) {
         centralView.centralViewDisplay = .square
         showButtons()
     }
-    
+    /**
+     Function that modifies layout of centraView with rectangle view on bottom
+     - Parameter sender: the button that is pressed
+     */
     @IBAction func bottomRectangleButton(_ sender: UIButton) {
         centralView.centralViewDisplay = .rectangleBotton
         showButtons()
     }
-   
-    // rule to show buttons
-    private func showButtons(){
+    /**
+     Function that modifies layout of centraView: buttons to add photos on centralView are hidden or not
+     - Switch on centralView.centralViewDisplay
+     */
+    private func showButtons() {
         combinedShapedAlphaNil()
         combinedShapedHidden()
         switch self.centralView.centralViewDisplay {
         case .rectangleBotton:
-            selectedView2_1.isHidden = false
-            selectedView2_2.isHidden = true
-            selectedViex1_2.isHidden = true
-            buttonTopLeft.isHidden = false
-            buttonBottomLong.isHidden = false
-            buttonTopRight.isHidden = false
-            
-            if topLeftImageView.image == nil {buttonTopLeft.alpha = 1}
-            if topRightImageView.image == nil {buttonTopRight.alpha = 1}
-            if longBottomImageView.image == nil {buttonBottomLong.alpha = 1}
-            
+            showButtonsRectangleBottomCase()
         case .rectangleTop:
-            selectedView2_1.isHidden = true
-            selectedView2_2.isHidden = true
-            selectedViex1_2.isHidden = false
-            buttonTopLong.isHidden = false
-            buttonBottomLeft.isHidden = false
-            buttonBottomRight.isHidden = false
-            
-            if bottomLeftImageView.image == nil {buttonBottomLeft.alpha = 1}
-            if bottomRightImageView.image == nil {buttonBottomRight.alpha = 1}
-            if longTopImageView.image == nil {buttonTopLong.alpha = 1}
-        
+            showButtonsRectangleTopCase()
         case .square:
-            selectedView2_1.isHidden = true
-            selectedView2_2.isHidden = false
-            selectedViex1_2.isHidden = true
-            buttonTopLeft.isHidden = false
-            buttonTopRight.isHidden = false
-            buttonBottomLeft.isHidden = false
-            buttonBottomRight.isHidden = false
-            if bottomLeftImageView.image == nil {buttonBottomLeft.alpha = 1}
-            if bottomRightImageView.image == nil {buttonBottomRight.alpha = 1}
-            if topLeftImageView.image == nil {buttonTopLeft.alpha = 1}
-            if topRightImageView.image == nil {buttonTopRight.alpha = 1}
+            showButtonsSquareCase()
         }
     }
-
-    
-    // Variable to track image get from UIPicker
-    
+    /**
+     Function that hides or shows buttons (to add photos on centralView) for RectangleBotton case
+     */
+    private func showButtonsRectangleBottomCase(){
+        selectedView2and1.isHidden = false
+        selectedView2and2.isHidden = true
+        selectedViex1and2.isHidden = true
+        buttonTopLeft.isHidden = false
+        buttonBottomLong.isHidden = false
+        buttonTopRight.isHidden = false
+        if topLeftImageView.image == nil {buttonTopLeft.alpha = 1}
+        if topRightImageView.image == nil {buttonTopRight.alpha = 1}
+        if longBottomImageView.image == nil {buttonBottomLong.alpha = 1}
+    }
+    /**
+     Function that hides or shows buttons (to add photos on centralView) for RectangleTop case
+     */
+    private func showButtonsRectangleTopCase(){
+        selectedView2and1.isHidden = true
+        selectedView2and2.isHidden = true
+        selectedViex1and2.isHidden = false
+        buttonTopLong.isHidden = false
+        buttonBottomLeft.isHidden = false
+        buttonBottomRight.isHidden = false
+        if bottomLeftImageView.image == nil {buttonBottomLeft.alpha = 1}
+        if bottomRightImageView.image == nil {buttonBottomRight.alpha = 1}
+        if longTopImageView.image == nil {buttonTopLong.alpha = 1}
+    }
+    /**
+     Function that hides or shows buttons (to add photos on centralView) for Square case
+     */
+    private func showButtonsSquareCase(){
+        selectedView2and1.isHidden = true
+        selectedView2and2.isHidden = false
+        selectedViex1and2.isHidden = true
+        buttonTopLeft.isHidden = false
+        buttonTopRight.isHidden = false
+        buttonBottomLeft.isHidden = false
+        buttonBottomRight.isHidden = false
+        if bottomLeftImageView.image == nil {buttonBottomLeft.alpha = 1}
+        if bottomRightImageView.image == nil {buttonBottomRight.alpha = 1}
+        if topLeftImageView.image == nil {buttonTopLeft.alpha = 1}
+        if topRightImageView.image == nil {buttonTopRight.alpha = 1}
+    }
+    /// Variable to track image picked by UIPicker
     var  photoToDisplay = UIImageView()
+     /// Variable to track add button chosen
     var  buttonToTrack = UIButton()
+     /// Variable that defines height of current screen
     private let screenHeight = UIScreen.main.bounds.height
+    /// Variable that defines width of current screen
     private let screenWidth = UIScreen.main.bounds.width
-    
     // List of button actions to select image from library
+    /**
+     Function that adds pickerView for topLeftImageView
+    - Parameter sender: the add button that is pressed
+    */
     @IBAction func buttonTopLeft(_ sender: UIButton) {
         photoToDisplay = topLeftImageView
         buttonToTrack = buttonTopLeft
         addPicker()
         showButtons()
-        print("topleft")
     }
-    
+    /**
+     Function that adds pickerView for topRightImageView
+     - Parameter sender: the add button that is pressed
+     */
     @IBAction func buttonTopRight(_ sender: UIButton) {
         photoToDisplay = topRightImageView
         buttonToTrack = buttonTopRight
@@ -121,7 +147,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         showButtons()
         print("topright")
     }
-    
+    /**
+     Function that adds pickerView for bottomLeftImageView
+     - Parameter sender: the add button that is pressed
+     */
     @IBAction func buttonBottomLeft(_ sender: UIButton) {
         photoToDisplay = bottomLeftImageView
         buttonToTrack = buttonBottomLeft
@@ -129,7 +158,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print("bottomLeft")
         showButtons()
     }
-    
+    /**
+     Function that adds pickerView for bottomRightImageView
+     - Parameter sender: the add button that is pressed
+     */
     @IBAction func buttonBottomRight(_ sender: UIButton) {
         photoToDisplay = bottomRightImageView
         buttonToTrack = buttonBottomRight
@@ -137,7 +169,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print("bottomRight")
         showButtons()
     }
-  
+    /**
+     Function that adds pickerView for longTopImageView
+     - Parameter sender: the add button that is pressed
+     */
     @IBAction func buttonTopLong(_ sender: UIButton) {
         photoToDisplay = longTopImageView
         buttonToTrack = buttonTopLong
@@ -146,7 +181,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonTopLong.alpha = 0.015
         showButtons()
     }
-    
+    /**
+     Function that adds pickerView for longBottomImageView
+     - Parameter sender: the add button that is pressed
+     */
     @IBAction func buttonBottomLong(_ sender: UIButton) {
         photoToDisplay = longBottomImageView
         buttonToTrack = buttonBottomLong
@@ -155,14 +193,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         showButtons()
     }
     
-    func addPicker(){
+    func addPicker() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
-        
-        // 3. Create a Alert to display Action
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
-        
-        // 3.1. Action for Camera
+        //  Action for Camera
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action: UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 // Create picker with source . Camera
@@ -175,13 +210,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.present(actionSheet, animated: true, completion : nil)
             }
         }))
-        
-        //  Action for Library
+        //  Action for Photo Library
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction) in
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true,completion: nil)
         }))
-        
         // Action for Delete
         actionSheet.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
             let actionSheet = UIAlertController(title: "L'image est supprimée", message: "Appuyer sur Cancel", preferredStyle: .alert)
@@ -190,7 +223,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(actionSheet, animated: true, completion : nil)
         }))
-        
+        // Action for Cancel
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion : nil)
     }
@@ -198,7 +231,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         photoToDisplay.image = image
-       buttonToTrack.alpha = 0.015
+        buttonToTrack.alpha = 0.015
         // What to do when operation is done
         picker.dismiss(animated: true, completion: nil)
     }
@@ -285,14 +318,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonBottomLeft.alpha = 0.015
         buttonBottomLong.alpha = 0.015
         buttonBottomRight.alpha = 0.015
-    }
-    private func combinedShapedAlpha1() {
-        buttonTopRight.alpha = 1
-        buttonTopLeft.alpha = 1
-        buttonTopLong.alpha = 1
-        buttonBottomLeft.alpha = 1
-        buttonBottomLong.alpha = 1
-        buttonBottomRight.alpha = 1
     }
     
     private func combinedShapedHidden(){

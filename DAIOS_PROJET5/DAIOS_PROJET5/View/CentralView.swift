@@ -9,33 +9,23 @@
 import UIKit
 
 class CentralView: UIView {
-
-    
     @IBOutlet private var imageTopRight: UIImageView!
     @IBOutlet private var imageTopLeft: UIImageView!
     @IBOutlet private var imageBottonRight: UIImageView!
     @IBOutlet private var imageBottonLeft: UIImageView!
     @IBOutlet private var imageLong: UIImageView!
     @IBOutlet private var imageLongBotton: UIImageView!
-    
-    
-    
-    
     /// Enumeration that lists options to display the imageView of centralView
     enum OptionDisplay {
         case rectangleTop, rectangleBotton, square
     }
-    
     /// Variable of type OptionDisplay used to set layout in regards with option choosen
     var centralViewDisplay: OptionDisplay = .rectangleBotton {
         didSet {
             setDisplay(centralViewDisplay)
         }
     }
-    
-    
-    private func setDisplay(_ optionDisplay: OptionDisplay){
-
+    private func setDisplay(_ optionDisplay: OptionDisplay) {
         switch optionDisplay {
         case .rectangleBotton:
             imageLong.isHidden = true
@@ -45,7 +35,6 @@ class CentralView: UIView {
             imageBottonRight.isHidden = true
             imageBottonLeft.isHidden = true
             print("rectangle bottom")
-            
         case .rectangleTop:
             imageLong.isHidden = false
             imageLongBotton.isHidden = true
@@ -54,7 +43,6 @@ class CentralView: UIView {
             imageBottonRight.isHidden = false
             imageBottonLeft.isHidden = false
              print("rectangle top")
-        
         case.square:
             imageTopLeft.isHidden = false
             imageTopRight.isHidden = false

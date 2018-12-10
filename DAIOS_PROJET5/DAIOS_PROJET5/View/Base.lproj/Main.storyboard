@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -24,24 +20,24 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DAIOS_PROJET5" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Instagrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0n-H6-PJR">
-                                <rect key="frame" x="129.33333333333334" y="64" width="118.66666666666666" height="39"/>
+                                <rect key="frame" x="242.5" y="40" width="117" height="35"/>
                                 <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GTJ-98-yw6" userLabel="Swipe Stack">
-                                <rect key="frame" x="126" y="231.66666666666666" width="123.33333333333331" height="40.333333333333343"/>
+                                <rect key="frame" x="219" y="124.5" width="162" height="41.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowUP" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CQj-lp-5a9">
-                                        <rect key="frame" x="54" y="0.0" width="15" height="10"/>
+                                        <rect key="frame" x="73.5" y="0.0" width="15" height="10"/>
                                         <variation key="heightClass=compact" image="ArrowLeft"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Swipe up to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Tme-Hf-KJ0">
-                                        <rect key="frame" x="0.0" y="18" width="123.33333333333333" height="22.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="18" width="162" height="23.5"/>
                                         <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -49,7 +45,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="7LR-VN-vGy" userLabel="CentralView" customClass="CentralView" customModule="DAIOS_PROJET5" customModuleProvider="target">
-                                <rect key="frame" x="61.666666666666657" y="280" width="251.99999999999997" height="252"/>
+                                <rect key="frame" x="174" y="174" width="252" height="252"/>
                                 <subviews>
                                     <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="qNW-dY-jTM" userLabel="TopLeft">
                                         <rect key="frame" x="20" y="20" width="96" height="96"/>
@@ -130,10 +126,10 @@
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YeX-uw-2Xe" userLabel="StackViewViewOptions">
-                                <rect key="frame" x="20" y="705.66666666666663" width="335" height="98.333333333333371"/>
+                                <rect key="frame" x="20" y="418.5" width="560" height="173.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJc-zn-Y69" userLabel="Button1and2">
-                                        <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="98.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="173.5" height="173.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="QJc-zn-Y69" secondAttribute="height" multiplier="1:1" id="hPx-1U-R1s"/>
                                         </constraints>
@@ -143,7 +139,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1e-6A-h2j" userLabel="Button2and1">
-                                        <rect key="frame" x="118.33333333333334" y="0.0" width="98.333333333333343" height="98.333333333333329"/>
+                                        <rect key="frame" x="193.5" y="0.0" width="173" height="173.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="U1e-6A-h2j" secondAttribute="height" multiplier="1:1" id="3FD-JK-A4c"/>
                                         </constraints>
@@ -153,7 +149,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRw-bb-5ln" userLabel="Button2and2">
-                                        <rect key="frame" x="236.66666666666671" y="0.0" width="98.333333333333343" height="98.333333333333329"/>
+                                        <rect key="frame" x="386.5" y="0.0" width="173.5" height="173.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ZRw-bb-5ln" secondAttribute="height" multiplier="1:1" id="W42-4l-JX9"/>
                                         </constraints>
@@ -172,7 +168,7 @@
                                 <variation key="heightClass=compact" axis="vertical"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29N-OS-4Kr" userLabel="ViewSelected2-1">
-                                <rect key="frame" x="138.33333333333334" y="705.66666666666663" width="98.333333333333343" height="98.333333333333371"/>
+                                <rect key="frame" x="251" y="456" width="98.5" height="98.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="swH-9I-9dB" userLabel="ImageViewSelected">
                                         <rect key="frame" x="9" y="9" width="80" height="80"/>
@@ -188,7 +184,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3VF-XJ-KrD" userLabel="ViewSelected2-2">
-                                <rect key="frame" x="256.66666666666669" y="705.66666666666663" width="98.333333333333314" height="98.333333333333371"/>
+                                <rect key="frame" x="444" y="456" width="98.5" height="98.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="bfb-Pd-DG2" userLabel="ImageViewSelected">
                                         <rect key="frame" x="9" y="9" width="80" height="80"/>
@@ -205,7 +201,7 @@
                                 <viewLayoutGuide key="safeArea" id="Ocx-ud-tOR"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHw-HD-aDr" userLabel="ViewSelected1-2">
-                                <rect key="frame" x="19.999999999999993" y="705.66666666666663" width="98.333333333333314" height="98.333333333333371"/>
+                                <rect key="frame" x="57.5" y="456" width="98.5" height="98.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="4xa-eP-Wz8" userLabel="ImageViewSelected">
                                         <rect key="frame" x="9" y="9" width="80" height="80"/>
@@ -222,7 +218,7 @@
                                 <viewLayoutGuide key="safeArea" id="D5e-H5-o8k"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKL-bm-kbb" userLabel="ButtonTopLeft">
-                                <rect key="frame" x="105.66666666666669" y="324" width="48" height="48"/>
+                                <rect key="frame" x="218" y="218" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BKL-bm-kbb" secondAttribute="height" multiplier="1:1" id="okW-pk-jSr"/>
@@ -233,7 +229,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqu-Ig-r9F" userLabel="ButtonTopRight">
-                                <rect key="frame" x="221.66666666666666" y="324" width="47.999999999999972" height="48"/>
+                                <rect key="frame" x="334" y="218" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zqu-Ig-r9F" secondAttribute="height" multiplier="1:1" id="EwH-s7-TAh"/>
@@ -244,7 +240,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vft-HW-t1j" userLabel="ButtonBottomRight">
-                                <rect key="frame" x="221.66666666666666" y="440" width="47.999999999999972" height="48"/>
+                                <rect key="frame" x="334" y="334" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vft-HW-t1j" secondAttribute="height" multiplier="1:1" id="UYQ-Ut-Uw6"/>
@@ -255,7 +251,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4S-ho-k4J" userLabel="ButtonTopLong">
-                                <rect key="frame" x="163.66666666666666" y="324" width="48" height="48"/>
+                                <rect key="frame" x="276" y="218" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="N4S-ho-k4J" secondAttribute="height" multiplier="1:1" id="3wA-a4-Enh"/>
@@ -266,7 +262,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TR-75-1MO" userLabel="ButtonBottomLong">
-                                <rect key="frame" x="163.66666666666666" y="440" width="48" height="48"/>
+                                <rect key="frame" x="276" y="334" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5TR-75-1MO" secondAttribute="height" multiplier="1:1" id="zYX-vV-9H3"/>
@@ -277,7 +273,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3D-LE-730" userLabel="ButtonBottomLeft">
-                                <rect key="frame" x="105.66666666666669" y="440" width="48" height="48"/>
+                                <rect key="frame" x="218" y="334" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="X3D-LE-730" secondAttribute="height" multiplier="1:1" id="6Q6-lH-dRq"/>
@@ -430,9 +426,9 @@
                         <outlet property="labelInstagrid" destination="L0n-H6-PJR" id="fS3-AQ-IiO"/>
                         <outlet property="longBottomImageView" destination="15F-AO-c2c" id="EIF-ty-taN"/>
                         <outlet property="longTopImageView" destination="9N2-Gs-OJt" id="knJ-5f-GQ9"/>
-                        <outlet property="selectedView2_1" destination="29N-OS-4Kr" id="X02-hA-xpW"/>
-                        <outlet property="selectedView2_2" destination="3VF-XJ-KrD" id="WYJ-l9-mrO"/>
-                        <outlet property="selectedViex1_2" destination="HHw-HD-aDr" id="PyE-t2-XVz"/>
+                        <outlet property="selectedView2and1" destination="29N-OS-4Kr" id="X02-hA-xpW"/>
+                        <outlet property="selectedView2and2" destination="3VF-XJ-KrD" id="WYJ-l9-mrO"/>
+                        <outlet property="selectedViex1and2" destination="HHw-HD-aDr" id="PyE-t2-XVz"/>
                         <outlet property="swipeLabel" destination="Tme-Hf-KJ0" id="sh6-rs-m5a"/>
                         <outlet property="swipeStack" destination="GTJ-98-yw6" id="gsY-3W-327"/>
                         <outlet property="topLeftImageView" destination="qNW-dY-jTM" id="q9e-vH-6y1"/>
