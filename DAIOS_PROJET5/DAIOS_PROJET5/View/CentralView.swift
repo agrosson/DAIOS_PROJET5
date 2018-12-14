@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class CentralView: UIView {
     @IBOutlet private var imageTopRight: UIImageView!
     @IBOutlet private var imageTopLeft: UIImageView!
@@ -15,10 +17,8 @@ class CentralView: UIView {
     @IBOutlet private var imageBottonLeft: UIImageView!
     @IBOutlet private var imageLong: UIImageView!
     @IBOutlet private var imageLongBotton: UIImageView!
-    /// Enumeration that lists options to display the imageView of centralView
-    enum OptionDisplay {
-        case rectangleTop, rectangleBotton, square
-    }
+   
+
     /// Variable of type OptionDisplay used to set layout in regards with option choosen
     var centralViewDisplay: OptionDisplay = .rectangleBotton {
         didSet {

@@ -13,9 +13,9 @@ import UIKit
  Extension on UIView to transform a UIView into an Image
  */
 
-extension UIView {
-    var renderedImage: UIImage? {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in layer.render(in: rendererContext.cgContext) }
-    }
+/// Enumeration that lists options to display the imageView of centralView
+enum OptionDisplay {
+    case rectangleTop, rectangleBotton, square
 }
+
+

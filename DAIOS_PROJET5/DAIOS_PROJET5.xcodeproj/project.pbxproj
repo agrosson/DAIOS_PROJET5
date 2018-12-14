@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C1041FDD21B1DFBC00024811 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = C1041FDC21B1DFBC00024811 /* AppIcon.appiconset */; };
+		C144EA4021C3F6E100BDA317 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144EA3F21C3F6E100BDA317 /* Extension.swift */; };
+		C144EA4321C4092F00BDA317 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144EA4221C4092F00BDA317 /* Config.swift */; };
 		C1BF87A521B43AB800B9DD54 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BF87A421B43AB800B9DD54 /* Engine.swift */; };
 		C1C0210021A6EEA500DD93BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C020FF21A6EEA500DD93BE /* AppDelegate.swift */; };
 		C1C0210221A6EEA500DD93BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C0210121A6EEA500DD93BE /* ViewController.swift */; };
@@ -21,6 +23,9 @@
 
 /* Begin PBXFileReference section */
 		C1041FDC21B1DFBC00024811 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon.appiconset; sourceTree = "<group>"; };
+		C144EA3F21C3F6E100BDA317 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		C144EA4121C3FC5600BDA317 /* Icon 180*180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon 180*180.png"; sourceTree = "<group>"; };
+		C144EA4221C4092F00BDA317 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		C1BF87A421B43AB800B9DD54 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		C1C020FC21A6EEA500DD93BE /* DAIOS_PROJET5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DAIOS_PROJET5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C020FF21A6EEA500DD93BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +76,7 @@
 				C1C020FF21A6EEA500DD93BE /* AppDelegate.swift */,
 				C1041FDC21B1DFBC00024811 /* AppIcon.appiconset */,
 				C1C0210621A6EEA600DD93BE /* Assets.xcassets */,
+				C144EA4121C3FC5600BDA317 /* Icon 180*180.png */,
 				C1C0210B21A6EEA600DD93BE /* Info.plist */,
 			);
 			path = DAIOS_PROJET5;
@@ -89,7 +95,9 @@
 		C1EE25CA21BE5882002D42C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C144EA4221C4092F00BDA317 /* Config.swift */,
 				C1BF87A421B43AB800B9DD54 /* Engine.swift */,
+				C144EA3F21C3F6E100BDA317 /* Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,10 +193,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C144EA4021C3F6E100BDA317 /* Extension.swift in Sources */,
 				C1CDE74621AC23A400869384 /* CentralView.swift in Sources */,
 				C1BF87A521B43AB800B9DD54 /* Engine.swift in Sources */,
 				C1C0210221A6EEA500DD93BE /* ViewController.swift in Sources */,
 				C1C0210021A6EEA500DD93BE /* AppDelegate.swift in Sources */,
+				C144EA4321C4092F00BDA317 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

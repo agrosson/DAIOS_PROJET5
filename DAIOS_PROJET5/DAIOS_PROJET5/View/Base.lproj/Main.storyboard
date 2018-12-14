@@ -372,12 +372,12 @@
                                 <exclude reference="lsp-XV-FVH"/>
                                 <exclude reference="04K-4R-Idj"/>
                                 <exclude reference="iT0-v9-GjW"/>
+                                <exclude reference="1Ug-Wp-HOe"/>
+                                <exclude reference="bew-Qy-Urg"/>
                                 <exclude reference="ef7-gC-LLq"/>
                                 <exclude reference="keP-LP-d7D"/>
                                 <exclude reference="pS2-Ms-P3X"/>
                                 <exclude reference="xLR-qd-q37"/>
-                                <exclude reference="1Ug-Wp-HOe"/>
-                                <exclude reference="bew-Qy-Urg"/>
                                 <exclude reference="4OK-CO-IyX"/>
                                 <exclude reference="BgN-UU-qi6"/>
                                 <exclude reference="KmP-7F-TeP"/>
@@ -393,6 +393,10 @@
                                 <exclude reference="b4w-Sy-c7M"/>
                                 <include reference="iT0-v9-GjW"/>
                                 <exclude reference="zj2-Ko-LIC"/>
+                                <include reference="1Ug-Wp-HOe"/>
+                                <exclude reference="PQQ-lB-YC0"/>
+                                <include reference="bew-Qy-Urg"/>
+                                <exclude reference="qPZ-nF-PiS"/>
                                 <exclude reference="HEW-mD-0mB"/>
                                 <exclude reference="WIq-sS-AH0"/>
                                 <include reference="ef7-gC-LLq"/>
@@ -400,10 +404,6 @@
                                 <exclude reference="nIX-J5-nMb"/>
                                 <include reference="pS2-Ms-P3X"/>
                                 <exclude reference="xLR-qd-q37"/>
-                                <include reference="1Ug-Wp-HOe"/>
-                                <exclude reference="PQQ-lB-YC0"/>
-                                <include reference="bew-Qy-Urg"/>
-                                <exclude reference="qPZ-nF-PiS"/>
                                 <include reference="4OK-CO-IyX"/>
                                 <include reference="BgN-UU-qi6"/>
                                 <include reference="KmP-7F-TeP"/>
@@ -451,7 +451,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-8257" y="-1427"/>
+            <point key="canvasLocation" x="-9263" y="-1434"/>
         </scene>
     </scenes>
     <resources>

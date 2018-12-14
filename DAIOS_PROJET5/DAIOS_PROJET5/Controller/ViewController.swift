@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // MARK: IBOutlets
     // list of imageViews outlets to display photos
     @IBOutlet weak var topLeftImageView: UIImageView!
     @IBOutlet weak var topRightImageView: UIImageView!
@@ -32,6 +33,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var buttonBottomRight: UIButton!
     @IBOutlet weak var buttonTopLong: UIButton!
     @IBOutlet weak var buttonBottomLong: UIButton!
+    // MARK: Properties
+    /// Variable to track image picked by UIPicker
+    var  photoToDisplay = UIImageView()
+    /// Variable to track add button chosen
+    var  buttonToTrack = UIButton()
+    /// Variable to check if no image is missing on central view when swipe
+    var isImageMissingOnCentralView = true
+    /// Variable that defines height of current screen
+    private let screenHeight = UIScreen.main.bounds.height
+    /// Variable that defines width of current screen
+    private let screenWidth = UIScreen.main.bounds.width
+    // MARK: IBActions
     // list of button actions to choose layout
     /**
      Function that modifies layout of centraView with rectangle view on top
@@ -57,6 +70,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         centralView.centralViewDisplay = .rectangleBotton
         showButtons()
     }
+    // MARK: Methods
     /**
      Function that modifies layout of centraView: buttons to add photos on centralView are hidden or not
      - Switch on centralView.centralViewDisplay
@@ -117,14 +131,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if topLeftImageView.image == nil {buttonTopLeft.alpha = 1}
         if topRightImageView.image == nil {buttonTopRight.alpha = 1}
     }
-    /// Variable to track image picked by UIPicker
-    var  photoToDisplay = UIImageView()
-     /// Variable to track add button chosen
-    var  buttonToTrack = UIButton()
-     /// Variable that defines height of current screen
-    private let screenHeight = UIScreen.main.bounds.height
-    /// Variable that defines width of current screen
-    private let screenWidth = UIScreen.main.bounds.width
+
     // List of button actions to select image from library
     /**
      Function that adds pickerView for topLeftImageView
@@ -145,7 +152,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonToTrack = buttonTopRight
         addPicker()
         showButtons()
-        print("topright")
     }
     /**
      Function that adds pickerView for bottomLeftImageView
@@ -155,7 +161,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         photoToDisplay = bottomLeftImageView
         buttonToTrack = buttonBottomLeft
         addPicker()
-        print("bottomLeft")
         showButtons()
     }
     /**
@@ -166,7 +171,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         photoToDisplay = bottomRightImageView
         buttonToTrack = buttonBottomRight
         addPicker()
-        print("bottomRight")
         showButtons()
     }
     /**
@@ -177,8 +181,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         photoToDisplay = longTopImageView
         buttonToTrack = buttonTopLong
         addPicker()
-        print("longtop")
-        buttonTopLong.alpha = 0.015
+        buttonTopLong.alpha = alphaCloseToNil
         showButtons()
     }
     /**
@@ -189,7 +192,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         photoToDisplay = longBottomImageView
         buttonToTrack = buttonBottomLong
         addPicker()
-        print(("longBottom"))
         showButtons()
     }
     /**
@@ -210,7 +212,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.present(imagePickerController, animated: true,completion: nil)
             }
             else {
-                let actionSheet = UIAlertController(title: "Camera non disponible", message: "Appuyer sur Cancel", preferredStyle: .alert)
+                let actionSheet = UIAlertController(title: "Camera not available", message: "Click on Cancel", preferredStyle: .alert)
                 actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 self.present(actionSheet, animated: true, completion : nil)
             }
@@ -222,7 +224,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }))
         // Action for Delete
         actionSheet.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
-            let actionSheet = UIAlertController(title: "L'image est supprimée", message: "Appuyer sur Cancel", preferredStyle: .alert)
+            let actionSheet = UIAlertController(title: "Photo is deleted", message: "Click on Cancel", preferredStyle: .alert)
             self.buttonToTrack.alpha = 1
             self.photoToDisplay.image = nil
             actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -238,7 +240,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         photoToDisplay.image = image
-        buttonToTrack.alpha = 0.015
+        buttonToTrack.alpha = alphaCloseToNil
         // What to do when operation is done
         picker.dismiss(animated: true, completion: nil)
     }
@@ -258,8 +260,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /// Swipe Action Left
     @IBAction func swipeLeftAction(_ sender: UISwipeGestureRecognizer) {
         if UIDevice.current.orientation.isLandscape {
-            print("go to left")
-            moveCentralViewLeft()
+            checkIfCentralViewCompletedWithImages()
+            if !isImageMissingOnCentralView {
+                moveCentralViewLeft()
+            } else {
+                let actionSheet = UIAlertController(title: "Sharing is not possible", message: "Add some photos before sharing", preferredStyle: .alert)
+                actionSheet.addAction(UIAlertAction(title: "Back", style: .cancel, handler: nil))
+                self.present(actionSheet, animated: true, completion : nil)
+            }
         }
     }
     
@@ -267,10 +275,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     */
     @IBAction func swipeUpAction(_ sender: UISwipeGestureRecognizer) {
         if UIDevice.current.orientation.isPortrait {
-            print("go to up")
-            moveCentralViewUp()
+            checkIfCentralViewCompletedWithImages()
+            if !isImageMissingOnCentralView{
+                moveCentralViewUp()
+            } else {
+                let actionSheet = UIAlertController(title: "Sharing is not possible", message: "Add some photos before sharing", preferredStyle: .alert)
+                actionSheet.addAction(UIAlertAction(title: "Back", style: .cancel, handler: nil))
+                self.present(actionSheet, animated: true, completion : nil)
+            }
         }
     }
+    // Function to check if central view is completed with images
+    
+    private func checkIfCentralViewCompletedWithImages(){
+        switch centralView.centralViewDisplay {
+        case .rectangleBotton:
+            if topLeftImageView.image != nil && topRightImageView.image != nil && longBottomImageView.image != nil {
+                isImageMissingOnCentralView = false
+            } else {
+                isImageMissingOnCentralView = true
+            }
+        case .rectangleTop:
+            if bottomLeftImageView.image != nil && bottomRightImageView.image != nil && longTopImageView.image != nil {
+                isImageMissingOnCentralView = false
+            } else {
+                isImageMissingOnCentralView = true
+            }
+        case .square:
+            if bottomLeftImageView.image != nil && bottomRightImageView.image != nil && topLeftImageView.image != nil
+                && topRightImageView.image != nil {
+                isImageMissingOnCentralView = false
+            } else {
+                isImageMissingOnCentralView = true
+            }
+        }
+    }
+    
+    
     /**
      Function that executes actions when user swipe up
      - Notes:
@@ -341,9 +382,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      */
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
-            swipeLabel.text = "Swipe left to share"
+            swipeLabel.text = textSwipeLeft
         } else {
-            swipeLabel.text = "Swipe up to share"
+            swipeLabel.text = textSwipeUp
         }
     }
     /**
@@ -357,12 +398,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      Function that fades out combinedShaped (buttons to add pictures) but buttons still active
      */
     private func combinedShapedAlphaNil() {
-        buttonTopRight.alpha = 0.015
-        buttonTopLeft.alpha = 0.015
-        buttonTopLong.alpha = 0.015
-        buttonBottomLeft.alpha = 0.015
-        buttonBottomLong.alpha = 0.015
-        buttonBottomRight.alpha = 0.015
+        buttonTopRight.alpha = alphaCloseToNil
+        buttonTopLeft.alpha = alphaCloseToNil
+        buttonTopLong.alpha = alphaCloseToNil
+        buttonBottomLeft.alpha = alphaCloseToNil
+        buttonBottomLong.alpha = alphaCloseToNil
+        buttonBottomRight.alpha = alphaCloseToNil
     }
     /**
      Function that hiddes combinedShaped (buttons to add pictures):  buttons not active
