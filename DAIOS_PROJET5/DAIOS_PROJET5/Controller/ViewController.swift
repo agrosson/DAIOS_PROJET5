@@ -35,11 +35,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var buttonBottomLong: UIButton!
     // MARK: Properties
     /// Variable to track image picked by UIPicker
-    var  photoToDisplay = UIImageView()
+    private var  photoToDisplay = UIImageView()
     /// Variable to track add button chosen
-    var  buttonToTrack = UIButton()
+    private var  buttonToTrack = UIButton()
     /// Variable to check if no image is missing on central view when swipe
-    var isImageMissingOnCentralView = true
+    private var isImageMissingOnCentralView = true
     /// Variable that defines height of current screen
     private let screenHeight = UIScreen.main.bounds.height
     /// Variable that defines width of current screen
@@ -68,6 +68,68 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      */
     @IBAction func bottomRectangleButton(_ sender: UIButton) {
         centralView.centralViewDisplay = .rectangleBotton
+        showButtons()
+    }
+    // List of button actions to select image from library
+    /**
+     Function that adds pickerView for topLeftImageView
+     - Parameter sender: the add button that is pressed
+     */
+    @IBAction func buttonTopLeft(_ sender: UIButton) {
+        photoToDisplay = topLeftImageView
+        buttonToTrack = buttonTopLeft
+        addPicker()
+        showButtons()
+    }
+    /**
+     Function that adds pickerView for topRightImageView
+     - Parameter sender: the add button that is pressed
+     */
+    @IBAction func buttonTopRight(_ sender: UIButton) {
+        photoToDisplay = topRightImageView
+        buttonToTrack = buttonTopRight
+        addPicker()
+        showButtons()
+    }
+    /**
+     Function that adds pickerView for bottomLeftImageView
+     - Parameter sender: the add button that is pressed
+     */
+    @IBAction func buttonBottomLeft(_ sender: UIButton) {
+        photoToDisplay = bottomLeftImageView
+        buttonToTrack = buttonBottomLeft
+        addPicker()
+        showButtons()
+    }
+    /**
+     Function that adds pickerView for bottomRightImageView
+     - Parameter sender: the add button that is pressed
+     */
+    @IBAction func buttonBottomRight(_ sender: UIButton) {
+        photoToDisplay = bottomRightImageView
+        buttonToTrack = buttonBottomRight
+        addPicker()
+        showButtons()
+    }
+    /**
+     Function that adds pickerView for longTopImageView
+     - Parameter sender: the add button that is pressed
+     */
+    @IBAction func buttonTopLong(_ sender: UIButton) {
+        photoToDisplay = longTopImageView
+        buttonToTrack = buttonTopLong
+        addPicker()
+        buttonTopLong.alpha = alphaCloseToNil
+        showButtons()
+    }
+    /**
+     Function that adds pickerView for longBottomImageView
+     - Parameter sender: the add button that is pressed
+     */
+    @IBAction func buttonBottomLong(_ sender: UIButton) {
+        photoToDisplay = longBottomImageView
+        buttonToTrack = buttonBottomLong
+        addPicker()
         showButtons()
     }
     // MARK: Methods
@@ -131,69 +193,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if topLeftImageView.image == nil {buttonTopLeft.alpha = 1}
         if topRightImageView.image == nil {buttonTopRight.alpha = 1}
     }
-
-    // List of button actions to select image from library
-    /**
-     Function that adds pickerView for topLeftImageView
-    - Parameter sender: the add button that is pressed
-    */
-    @IBAction func buttonTopLeft(_ sender: UIButton) {
-        photoToDisplay = topLeftImageView
-        buttonToTrack = buttonTopLeft
-        addPicker()
-        showButtons()
-    }
-    /**
-     Function that adds pickerView for topRightImageView
-     - Parameter sender: the add button that is pressed
-     */
-    @IBAction func buttonTopRight(_ sender: UIButton) {
-        photoToDisplay = topRightImageView
-        buttonToTrack = buttonTopRight
-        addPicker()
-        showButtons()
-    }
-    /**
-     Function that adds pickerView for bottomLeftImageView
-     - Parameter sender: the add button that is pressed
-     */
-    @IBAction func buttonBottomLeft(_ sender: UIButton) {
-        photoToDisplay = bottomLeftImageView
-        buttonToTrack = buttonBottomLeft
-        addPicker()
-        showButtons()
-    }
-    /**
-     Function that adds pickerView for bottomRightImageView
-     - Parameter sender: the add button that is pressed
-     */
-    @IBAction func buttonBottomRight(_ sender: UIButton) {
-        photoToDisplay = bottomRightImageView
-        buttonToTrack = buttonBottomRight
-        addPicker()
-        showButtons()
-    }
-    /**
-     Function that adds pickerView for longTopImageView
-     - Parameter sender: the add button that is pressed
-     */
-    @IBAction func buttonTopLong(_ sender: UIButton) {
-        photoToDisplay = longTopImageView
-        buttonToTrack = buttonTopLong
-        addPicker()
-        buttonTopLong.alpha = alphaCloseToNil
-        showButtons()
-    }
-    /**
-     Function that adds pickerView for longBottomImageView
-     - Parameter sender: the add button that is pressed
-     */
-    @IBAction func buttonBottomLong(_ sender: UIButton) {
-        photoToDisplay = longBottomImageView
-        buttonToTrack = buttonBottomLong
-        addPicker()
-        showButtons()
-    }
     /**
      Function that creates a imagePicker and UIAlertController
      */
@@ -237,12 +236,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /**
      Function that tells the delegate that the user picked a still image or movie and set the image picked as the photo to display on image view choosen.
      */
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        photoToDisplay.image = image
-        buttonToTrack.alpha = alphaCloseToNil
+        combinedShapedHidden()
+        centralView.isHidden = true
         // What to do when operation is done
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true) {
+            self.scaleCentralView()
+            self.photoToDisplay.image = image
+            self.showButtons()
+        }
     }
     /**
      Function that tells the delegate that the user cancelled the pick operation.
@@ -251,12 +254,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // What to do when operation is done
         picker.dismiss(animated: true, completion: nil)
     }
+    /**
+     Function that creates an animation to send back centralView on screen after picture has been picked
+     */
+    private func scaleCentralView() {
+        let transformation1 = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        let transformation2 = CGAffineTransform(scaleX: 1, y: 1)
+        centralView.transform = transformation1
+        centralView.isHidden = false
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: [], animations: {
+            self.centralView.transform = transformation2
+        }, completion: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
        launchApp()
     }
-   
     /// Swipe Action Left
     @IBAction func swipeLeftAction(_ sender: UISwipeGestureRecognizer) {
         if UIDevice.current.orientation.isLandscape {
@@ -270,7 +285,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
     }
-    
     /** Swipe Action Up
     */
     @IBAction func swipeUpAction(_ sender: UISwipeGestureRecognizer) {
@@ -285,9 +299,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
     }
-    // Function to check if central view is completed with images
-    
-    private func checkIfCentralViewCompletedWithImages(){
+    /** Function that checks if centralView is completed with images
+    */
+    func checkIfCentralViewCompletedWithImages(){
         switch centralView.centralViewDisplay {
         case .rectangleBotton:
             if topLeftImageView.image != nil && topRightImageView.image != nil && longBottomImageView.image != nil {
@@ -310,8 +324,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
     }
-    
-    
     /**
      Function that executes actions when user swipe up
      - Notes:

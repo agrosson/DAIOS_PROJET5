@@ -9,6 +9,9 @@
 import UIKit
 import Foundation
 
+/**
+ Extension on UIView to transform a UIView into an Image
+ */
 extension UIView {
     var renderedImage: UIImage? {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)

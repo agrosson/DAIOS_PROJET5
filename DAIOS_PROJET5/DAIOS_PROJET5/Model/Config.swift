@@ -9,8 +9,10 @@
 import UIKit
 import Foundation
 
+// MARK: Properties
+/// Constant that set alpha close to nill
 let alphaCloseToNil: CGFloat = 0.015
-
+/// Text displayed on label when device mode is landscape
 let textSwipeLeft = "Swipe left to share"
-
+/// Text displayed on label when device mode is portrait
 let textSwipeUp = "Swipe up to share"

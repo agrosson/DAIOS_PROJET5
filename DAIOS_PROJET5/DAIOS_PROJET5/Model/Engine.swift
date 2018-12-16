@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-/**
- Extension on UIView to transform a UIView into an Image
- */
-
 /// Enumeration that lists options to display the imageView of centralView
 enum OptionDisplay {
     case rectangleTop, rectangleBotton, square
